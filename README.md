@@ -1,5 +1,34 @@
 # SCRIPTING IN PYTHON
 
+scripting - 1 file - simple  / easy to read / very specific / high level languages
+programming - many files - complex / flexible / low level languages
+
+high level language - easier to read
+
+low level language - very technical, computer level
+
+scripting scope is targeted for one specific task
+
+why we write scripts in python?
+* python is easy
+* a lot of libraries
+* language Interoperability - works good with different software 
+* large community / open source
+
+
+Photoshop analogy:
+resizing image - a lot of steps to do in photoshop
+
+instead of manually changing resolution for 100 images. just write a script 
+
+
+Why Devops care about scripting:
+
+* Automation 
+* Configuration -> IaC (configuration scripts, orchestration)
+* making things more efficient
+
+
 In Python, scripting refers to the process of writing scripts or programs that automate specific tasks or perform a series of instructions. A script is a file containing a sequence of Python statements that can be executed by an interpreter.
 
 Scripting in Python is often used for various purposes, such as:
