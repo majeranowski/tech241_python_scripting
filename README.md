@@ -1,5 +1,7 @@
 # SCRIPTING IN PYTHON
 
+### Lesson:
+
 scripting - 1 file - simple  / easy to read / very specific / high level languages
 programming - many files - complex / flexible / low level languages
 
@@ -27,6 +29,8 @@ Why Devops care about scripting:
 * Automation 
 * Configuration -> IaC (configuration scripts, orchestration)
 * making things more efficient
+
+### Research:
 
 
 In Python, scripting refers to the process of writing scripts or programs that automate specific tasks or perform a series of instructions. A script is a file containing a sequence of Python statements that can be executed by an interpreter.
@@ -64,33 +68,28 @@ Scripting is beneficial for DevOps (Development and Operations) practices due to
 Overall, scripting in DevOps enables automation, consistency, scalability, and efficiency in the development and operations processes. It allows DevOps teams to focus on higher-level tasks, reduces manual errors, enhances productivity, and promotes collaboration and best practices within the team.
 
 ### Example of scripting in Python
-
+Here is a complete example script where we use JSON and os python module to retrieve the absolute path of the JSON file. Also, we are using for loop to print all the keys and values of the JSON file.
 
 ```python
-# Simple Arithmetic Script
+import json
+import os
 
-num1 = 10
-num2 = 5
+# Script to create absolute path of the JSON file.
 
-# Addition
-result = num1 + num2
-print("Addition:", result)
+script_dir = os.path.dirname(__file__)
+print("The Script is located at:" + script_dir )
+script_absolute_path = os.path.join(script_dir, 'example.json')
+print("The Script Path is:" + script_absolute_path)
 
-# Subtraction
-result = num1 - num2
-print("Subtraction:", result)
+# Script to parse JSON
 
-# Multiplication
-result = num1 * num2
-print("Multiplication:", result)
+json = json.loads(open(script_absolute_path).read())
+value = json['name']
+print(value)
 
-# Division
-result = num1 / num2
-print("Division:", result)
+# Loop through JSON keys and values
 
+for key in json:
+    value = json[key]
+    print("The key and value are ({}) = ({})".format(key, value))
 ```
-
-In this script, the variables num1 and num2 store the values 10 and 5, respectively. The script performs arithmetic operations on these variables and prints the results. The four basic arithmetic operations, addition, subtraction, multiplication, and division, are demonstrated in this example.
-
-When you run this script, it will output the results of each operation, showcasing how scripting in Python allows you to automate calculations and perform tasks quickly and easily.
-# tech241_python_scripting
