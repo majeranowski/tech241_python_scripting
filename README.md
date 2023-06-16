@@ -93,3 +93,166 @@ for key in json:
     value = json[key]
     print("The key and value are ({}) = ({})".format(key, value))
 ```
+
+### Very useful scripts:
+
+How to check if JSON is valid:
+
+```python
+import os
+import json
+import sys
+
+# How to check if the JSON is valid
+
+if len(sys.argv) > 1:  # if there are more than 1 arguments in termina
+    if os.path.exists(sys.argv[1]):  #if the file axtually exists
+        file = open(sys.argv[1], "r")
+        json.load(file)   #check if it is JSON, if it opens
+        file.close()   # you have to close if u opened
+        print("JSON is VALID!")
+    else:
+        print(sys.argv[1] + " not found")
+else:
+    print("Usage: check_json.py <file>")
+```
+
+run script in terminal:
+
+`py <name of the python file> <json file name>`
+
+
+### JSON
+
+```python
+# Working with JSON in Python
+# JavaScript Object Notation (JSON)
+
+# high level human readable language - mostyle used to transport data.
+
+# JSON works with key/value pairs
+
+# {"firstname": "John", "lastname": "Bond"}
+
+# parsing? Turning a string into a data structure and vice versa
+
+import json # importing json library
+#
+# json = json.loads(open('example.json').read()) # save json file to a python dict
+# value = json['name']  # gettin the value of 'name' key
+# for key in json:
+#     print(key)
+
+# more advanced:
+# script to make an absolute of the JSON file
+import os
+script_dir = os.path.dirname(__file__)
+print("The script is located at: " + script_dir)
+script_absolute_path = os.path.join(script_dir, 'example.json')
+print("The script absolute path is: " + script_absolute_path)
+
+# script to parse JSON
+json =json.loads(open(script_absolute_path).read())
+value = json['name']
+print(value)
+
+# loop through the JSON:
+
+for key in json:
+    value = json[key]
+    print("The key and value are {} = {}".format(key, value))
+```
+
+### Parsing remote JSON
+
+```python
+import urllib.request
+import json
+
+with urllib.request.urlopen("http://jsonplaceholder.typicode.com/todos/1") as url:
+    data = json.load(url)
+    print(data)
+
+```
+
+### Converting JSON file to YAML:
+
+```python
+import json
+import os
+import sys
+import yaml
+# checking there is a file named  passed
+if len(sys.argv) > 1:
+    # opening the file
+    if os.path.exists(sys.argv[1]):
+        source_file = open(sys.argv[1], "r")
+        source_content = json.load(source_file)
+        source_file.close()
+    #failing if the file is not found
+    else:
+        print("Error")
+        exit(1)
+# no file no usage
+else:
+    print("You are not using this program properly")
+# processing the conversion
+output = yaml.dump(source_content)
+
+# if no target file send to stdout
+if len(sys.argv) < 3:
+    print(output)
+ # if the target file already exist
+elif os.path.exists(sys.argv[2]):
+    print("Error, file already exists")
+    exit(1)
+ # otherwise write to the specific target
+else:
+    target_file = open(sys.argv[2], "w")
+    target_file.write(output)
+    target_file.close()
+```
+
+run the script in terminal:
+`py <python file with script> <input file with JSON> <output YAML file we want to create>`
+
+### YAML to JSON
+
+```python
+import json
+import os
+import sys
+import yaml
+# checking there is a file named  passed
+if len(sys.argv) > 1:
+    # opening the file
+    if os.path.exists(sys.argv[1]):
+        source_file = open(sys.argv[1], "r")
+        source_content = yaml.safe_load(source_file)
+        source_file.close()
+    #failing if the file is not found
+    else:
+        print("Error")
+        exit(1)
+# no file no usage
+else:
+    print("You are not using this program properly")
+# processing the conversion
+output = json.dumps(source_content)
+
+# if no target file send to stdout
+if len(sys.argv) < 3:
+    print(output)
+ # if the target file already exist
+elif os.path.exists(sys.argv[2]):
+    print("Error, file already exists")
+    exit(1)
+ # otherwise write to the specific target
+else:
+    target_file = open(sys.argv[2], "w")
+    target_file.write(output)
+    target_file.close()
+```
+
+run the script in terminal:
+`py <python file with script> <input file with YAML> <output JSON file we want to create>`
